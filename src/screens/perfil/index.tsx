@@ -33,17 +33,17 @@ export const perfil = () => {
 
                     <View>
                         <Text>Dados Pessoais</Text>
-                        <Text>{'>'}</Text>
+                        
                     </View>
 
                     <View>
                         <Text>Segurança</Text>
-                        <Text>{'>'}</Text>
+                        
                     </View>
 
                     <View>
                         <Text>Sobre o App</Text>
-                        <Text>{'>'}</Text>
+        
                     </View>
                 </View>
 
