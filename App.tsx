@@ -1,13 +1,23 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { createStaticNavigation } from '@react-navigation/native';
+import { createStaticNavigation, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import DetailsScreen from './src/screens/DetailsScreen';
+import Init from './src/screens/auth/Index';
+import LoginScreen from './src/screens/auth/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
-import { RootStack } from './src/routes/route';
-
-const Navigation = createStaticNavigation(RootStack);
+import DetailsScreen from './src/screens/DetailsScreen';
+import RootStackComponent from './src/routes/route';
+import { useFonts } from 'expo-font';
+import CustomTabNavigator from './src/routes/TabNavegation';
 
 export default function App() {
-  return <Navigation />;
+
+  const [fontsLoaded] = useFonts({
+    'Jersey': require('./src/assets/fonts/Jersey10-Regular.ttf'),
+  });
+  
+  return (
+    <NavigationContainer>
+      <CustomTabNavigator />
+    </NavigationContainer>
+  );
 }
