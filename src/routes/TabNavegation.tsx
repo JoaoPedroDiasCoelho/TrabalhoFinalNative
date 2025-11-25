@@ -50,16 +50,19 @@ function CustomTabNavigator() {
             },
 
             tabBarStyle: {
-                backgroundColor: '#222222',
+                backgroundColor: '#000',
                 position: 'absolute',
                 marginHorizontal: 20,
                 borderRadius: 30,
+                borderColor: "#fff",
+                borderWidth: 3,
+                borderStyle: 'solid',
                 height: 70, 
                 borderTopWidth: 0,
                 shadowColor: '#000',
-                shadowOffset: { width: 0, height: 5 },
-                shadowOpacity: 0.3,
-                shadowRadius: 5,
+                shadowOffset: { width: 0, height: 20 },
+                shadowOpacity: 0.8,
+                shadowRadius: 20,
                 elevation: 10,
                 marginBottom: 30
             },
