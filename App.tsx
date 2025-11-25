@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { createStaticNavigation } from '@react-navigation/native';
+import { createStaticNavigation, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import DetailsScreen from './src/screens/DetailsScreen';
-import HomeScreen from './src/screens/HomeScreen';
-import { RootStack } from './src/routes/route';
-
-const Navigation = createStaticNavigation(RootStack);
+import RootStackComponent from './src/routes/route';
 
 export default function App() {
-  return <Navigation />;
+  return (
+    <NavigationContainer>
+      <RootStackComponent />
+    </NavigationContainer>
+  );
 }
