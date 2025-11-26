@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 
 
 function WalletScreen() {
@@ -10,9 +11,6 @@ function WalletScreen() {
 }
 function HistoryScreen() {
   return <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}><Text>Histórico</Text></View>;
-}
-function ProfileScreen() {
-    return <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}><Text>Perfil</Text></View>;
 }
 
 const Tab = createBottomTabNavigator();
