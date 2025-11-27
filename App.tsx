@@ -8,6 +8,7 @@ import DetailsScreen from './src/screens/DetailsScreen';
 import RootStackComponent from './src/routes/route';
 import { useFonts } from 'expo-font';
 import CustomTabNavigator from './src/routes/TabNavegation';
+import { TransactionProvider } from './src/context/transactions';
 
 export default function App() {
 
@@ -16,8 +17,10 @@ export default function App() {
   });
   
   return (
-    <NavigationContainer>
-      <CustomTabNavigator />
-    </NavigationContainer>
+    <TransactionProvider>
+      <NavigationContainer>
+        <RootStackComponent/>
+      </NavigationContainer>
+    </TransactionProvider>
   );
 }

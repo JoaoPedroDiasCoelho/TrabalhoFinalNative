@@ -17,12 +17,18 @@ const LoginScreen: React.FC<Props> = ({ navigation: propNavigation }) => {
       Alert.alert('Erro', 'PREENCHE CARALHO');
       return;
     }
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-        navigation.navigate('Home');
-        Alert.alert('Sucesso', 'Login simulado efetuado.');
-    }, 900);
+    else if(email === "joao@gmail.com" && password === "123456"){
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+            navigation.navigate('Home');
+            Alert.alert('Sucesso', 'Login efetuado com sucesso');
+        }, 900);
+    }
+    else{
+      Alert.alert('Erro', 'credenciais incorretas');
+    }
+    
   };
 
   return (

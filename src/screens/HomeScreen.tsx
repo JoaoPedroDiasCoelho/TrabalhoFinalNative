@@ -2,9 +2,11 @@
 import { useState } from "react";
 import { View, Text, Image, StatusBar, TouchableOpacity } from "react-native";
 import NewsScreen from "../components/common/News";
+import { useTransactions } from "../context/transactions";
 
 function HomeScreen() {
   const [isVisivel, setIsVisivel] = useState(true);
+  const { totalBalance } = useTransactions();
 
   const handleVisible = () => setIsVisivel(!isVisivel)
     
@@ -22,7 +24,7 @@ function HomeScreen() {
           <View style={{flexDirection: "row", alignItems: "center"}}>
             <Image source={require("../assets/brasil.png")} style={{height: 40, width: 40}}/>
             
-              <Text style={{ color: "#fff", fontFamily: "Jersey", fontSize: 42, marginLeft: 20 }}>{isVisivel ? "R$ 400,00" : "*****"}</Text>
+              <Text style={{ color: "#fff", fontFamily: "Jersey", fontSize: 42, marginLeft: 20 }}>{isVisivel ? `R$: ${totalBalance}` : "*****"}</Text>
             
           </View>
           <TouchableOpacity onPress={handleVisible}>

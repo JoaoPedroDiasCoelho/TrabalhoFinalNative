@@ -4,13 +4,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import TransactionInputScreen from '../screens/TransactionInputScreen';
+import HistoryScreen from '../screens/HistoryScreen';
 
 
 function WalletScreen() {
   return <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}><Text>Carteira</Text></View>;
-}
-function HistoryScreen() {
-  return <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}><Text>Histórico</Text></View>;
 }
 
 const Tab = createBottomTabNavigator();
@@ -72,6 +71,7 @@ function CustomTabNavigator() {
       <Tab.Screen name="Wallet" component={WalletScreen} />
       <Tab.Screen name="History" component={HistoryScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
+      
     </Tab.Navigator>
   );
 }
