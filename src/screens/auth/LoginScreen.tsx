@@ -26,7 +26,7 @@ const LoginScreen: React.FC<Props> = ({ navigation: propNavigation }) => {
         }, 900);
     }
     else{
-      Alert.alert('Erro', 'credenciais incorretas');
+      Alert.alert('Erro', 'Credenciais incorretas');
     }
     
   };

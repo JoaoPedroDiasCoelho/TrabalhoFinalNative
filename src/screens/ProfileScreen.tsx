@@ -1,45 +1,31 @@
 import React from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { useTheme } from '@react-navigation/native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useTransactions } from '../context/transactions';
 
-// --- CORES PADRÃO DARK MODE/TUDO PRETO ---
-const BACKGROUND_COLOR = '#000000';
-const HEADER_COLOR = '#121212';
-const CARD_COLOR = '#1A1A1A';
-const TEXT_COLOR_PRIMARY = '#FFFFFF';
-const TEXT_COLOR_SECONDARY = '#A0A0A0';
-const DANGER_COLOR = '#FF3333';
-const SUCCESS_COLOR = '#4CD964';
-const ACCENT_COLOR = '#4A90E2';
-
 const usuario = {
-    nome: "Yuri Collodeti",
-    email: "yuricollodeti@monetto.com",
+    nome: "João Pedro Dias",
+    email: "joao@gmail.com",
     image: './src/assets/avatar.png'
 };
 
 const RecentTransactionItem = ({ item, isLast }) => {
     const isExpense = item.type === 'expense';
-    const amountColor = isExpense ? DANGER_COLOR : SUCCESS_COLOR;
-    const formattedAmount = new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-    }).format(item.amount);
-    const formattedDate = item.date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    const amountColor = isExpense ? '#FF3333' : '#4CD964';
+    const formattedAmount = item.amount.toFixed(2).replace('.', ',');
+    const formattedDate = item.date.toLocaleDateString('pt-BR');
 
     return (
         <View style={{ marginBottom: isLast ? 0 : 15 }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 5 }}>
-                <Text style={{ color: TEXT_COLOR_PRIMARY, fontSize: 18, fontWeight: '600' }}>
+                <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: '600' }}>
                     {item.description || item.category}
                 </Text>
                 <Text style={{ color: amountColor, fontSize: 18, fontWeight: '700' }}>
                     {isExpense ? '- ' : '+ '} {formattedAmount}
                 </Text>
             </View>
-            <Text style={{ color: TEXT_COLOR_SECONDARY, fontSize: 12, fontWeight: '400' }}>
+            <Text style={{ color: '#A0A0A0', fontSize: 12, fontWeight: '400' }}>
                 {item.category} • {formattedDate}
             </Text>
         </View>
@@ -70,10 +56,10 @@ const ProfileScreen = ({ navigation }) => {
     
 
     return (
-        <View style={{ flex: 1, backgroundColor: themeColors.background || BACKGROUND_COLOR }}>
+        <View style={{ flex: 1, backgroundColor: themeColors.background || '#000000' }}>
             <View style={{
                 height: 180,
-                backgroundColor: HEADER_COLOR,
+                backgroundColor: '#121212',
                 borderBottomLeftRadius: 30,
                 borderBottomRightRadius: 30,
                 zIndex: 0,
@@ -84,19 +70,19 @@ const ProfileScreen = ({ navigation }) => {
                         width: 130, 
                         height: 130, 
                         borderRadius: 65, 
-                        backgroundColor: CARD_COLOR, 
+                        backgroundColor: '#1A1A1A', 
                         justifyContent: 'center', 
                         alignItems: 'center',
                         marginBottom: 10,
                         borderWidth: 4,
-                        borderColor: TEXT_COLOR_PRIMARY,
+                        borderColor: '#FFFFFF',
                         
                     }}>
                         <Image source={require('../assets/avatar.png')} style={{width: "100%", height: "100%"}} />
                     </View>
                     
                     <Text style={{ fontSize: 48, color: "#000", fontFamily: "Jersey" }}>{usuario.nome}</Text>
-                    <Text style={{ fontSize: 16, color: TEXT_COLOR_SECONDARY, marginTop: 4, fontFamily: "Jersey" }}>{usuario.email}</Text>
+                    <Text style={{ fontSize: 16, color: '#A0A0A0', marginTop: 4, fontFamily: "Jersey" }}>{usuario.email}</Text>
                 </View>
 
             <ScrollView contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 100, marginBottom: 50}}>
@@ -104,7 +90,7 @@ const ProfileScreen = ({ navigation }) => {
                 
 
                 <View style={{
-                    backgroundColor: CARD_COLOR,
+                    backgroundColor: '#1A1A1A',
                     borderRadius: 24,
                     padding: 24,
                     marginBottom: 20,
@@ -114,17 +100,17 @@ const ProfileScreen = ({ navigation }) => {
                     shadowRadius: 5,
                     elevation: 8,
                 }}>
-                    <Text style={{ color: TEXT_COLOR_SECONDARY, fontSize: 16, fontFamily: "Jersey" }}>Saldo atual</Text>
-                    <Text style={{ color: SUCCESS_COLOR, fontSize: 42, fontFamily: "Jersey", marginTop: 10, marginBottom: 5 }}>
-                        {formattedBalance}
+                    <Text style={{ color: '#A0A0A0', fontSize: 16, fontFamily: "Jersey" }}>Saldo atual</Text>
+                    <Text style={{ color: '#4CD964', fontSize: 42, fontFamily: "Jersey", marginTop: 10, marginBottom: 5 }}>
+                        R${formattedBalance}
                     </Text>
-                    <Text style={{ color: TEXT_COLOR_SECONDARY, fontSize: 12, fontWeight: '600' }}>
+                    <Text style={{ color: '#A0A0A0', fontSize: 12, fontWeight: '600' }}>
                         * Baseado em {transactions.length} lançamentos.
                     </Text>
                 </View>
                 
                 <View style={{
-                    backgroundColor: CARD_COLOR,
+                    backgroundColor: '#1A1A1A',
                     borderRadius: 24,
                     padding: 24,
                     marginBottom: 20,
@@ -135,9 +121,9 @@ const ProfileScreen = ({ navigation }) => {
                     elevation: 8,
                 }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-                        <Text style={{ color: TEXT_COLOR_PRIMARY, fontSize: 20, fontWeight: 'bold' }}>Transações Recentes</Text>
+                        <Text style={{ color: '#FFFFFF', fontSize: 20, fontWeight: 'bold' }}>Transações Recentes</Text>
                         <TouchableOpacity onPress={handleSeeAllHistory}>
-                            <Text style={{ color: ACCENT_COLOR, fontSize: 16, fontWeight: '700' }}>Ver tudo</Text>
+                            <Text style={{ color: '#4A90E2', fontSize: 16, fontWeight: '700' }}>Ver tudo</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -150,7 +136,7 @@ const ProfileScreen = ({ navigation }) => {
                             />
                         ))
                     ) : (
-                        <Text style={{ color: TEXT_COLOR_SECONDARY, textAlign: 'center', paddingVertical: 10 }}>
+                        <Text style={{ color: '#A0A0A0', textAlign: 'center', paddingVertical: 10 }}>
                             Nenhuma transação recente.
                         </Text>
                     )}
@@ -158,15 +144,15 @@ const ProfileScreen = ({ navigation }) => {
 
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: "center", marginTop: 10 }}>
                     <TouchableOpacity onPress={handleDepositNavigation} style={{
-                        backgroundColor: CARD_COLOR,
+                        backgroundColor: '#1A1A1A',
                         width: '48%',
                         paddingVertical: 18,
                         borderRadius: 16,
                         alignItems: 'center',
                         borderWidth: 1,
-                        borderColor: TEXT_COLOR_SECONDARY,
+                        borderColor: '#A0A0A0',
                     }}>
-                        <Text style={{ color: TEXT_COLOR_PRIMARY, fontSize: 18, fontWeight: 'bold' }}>Lançar</Text>
+                        <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: 'bold' }}>Lançar</Text>
                     </TouchableOpacity>
                 </View>
 
